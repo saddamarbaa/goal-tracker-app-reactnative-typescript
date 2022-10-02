@@ -1,54 +1,19 @@
-import {
-	StyleSheet,
-	Text,
-	View,
-	Button,
-	FlatList,
-	SafeAreaView,
-} from 'react-native'
+import { StyleSheet, Text, View, FlatList, SafeAreaView } from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
 
 import { RootTabScreenProps, GoalType } from '../types'
 import GoalItem from '../components/GoalItem'
-import GoalInput from '../components/GoalInput'
-
-const myItemSeparator = () => {
-	return <View style={{ backgroundColor: 'grey' }} />
-}
-
-const myListEmpty = () => {
-	return (
-		<View style={styles.emptyList}>
-			<Text style={styles.item}>No goals found</Text>
-		</View>
-	)
-}
+import { FormButton, Card, Input } from '../components'
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
 	const [refreshing, setRefreshing] = useState(false)
 	const [goals, setGoals] = useState<GoalType[]>([])
 	const [isAddGoal, setIsAddGoal] = useState(false)
 
-	const addGoalHandler = (enteredGoal: string) => {
-		if (!enteredGoal || enteredGoal.trim() === '') {
-		} else {
-			// update state based on the previous sate with best practices
-			setGoals((previousGoals) => [
-				{
-					timestamp: new Date(),
-					key: Math.random().toString(),
-					id: Math.random().toString(),
-					value: enteredGoal,
-				},
-				...previousGoals,
-			])
-		}
-	}
-
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			title: 'Your Goals',
-			headerStyle: { backgroundColor: '#1e085a', borderWidth: 0 },
+			headerStyle: { backgroundColor: '#1e085a' },
 			headerTintColor: 'white',
 			headerTitleStyle: {
 				fontWeight: 'bold',
@@ -59,6 +24,19 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
 			headerLeft: () => <View style={{ marginLeft: 20 }}></View>,
 		})
 	}, [navigation])
+
+	const addGoalHandler = (enteredGoal: string) => {
+		// update state based on the previous sate with best practices
+		setGoals((previousGoals) => [
+			{
+				timestamp: new Date(),
+				key: Math.random().toString(),
+				id: Math.random().toString(),
+				value: enteredGoal,
+			},
+			...previousGoals,
+		])
+	}
 
 	const deleteGoalHandler = (goalId: string) => {
 		// Fist solution
@@ -77,86 +55,83 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
 		setRefreshing((prevState) => !prevState)
 	}
 
+	const myItemSeparator = () => {
+		return <View style={{ backgroundColor: 'grey' }} />
+	}
+
+	const myListEmpty = () => {
+		return (
+			<Card style={{ backgroundColor: '#5e0acc' }}>
+				<Text style={styles.item}>No goals found</Text>
+			</Card>
+		)
+	}
+
 	return (
-		<SafeAreaView style={styles.container}>
-			{!isAddGoal && (
-				<View style={styles.button}>
-					<Button title="Add New Goal" onPress={() => setIsAddGoal(true)} />
-				</View>
-			)}
-
-			<GoalInput
-				onAddGoal={addGoalHandler}
-				modalVisible={isAddGoal}
-				setIsAddGoal={setIsAddGoal}
-			/>
-
-			<FlatList
-				contentContainerStyle={styles.flatList}
-				data={goals}
-				renderItem={({ item }) => (
-					<GoalItem
-						value={item.value}
-						timestamp={item.timestamp}
-						key={item.key}
-						id={item.id}
-						onDelete={deleteGoalHandler}
+		<SafeAreaView style={styles.appContainer}>
+			<View style={styles.innerWrapper}>
+				{!isAddGoal && (
+					<FormButton
+						buttonTitle={`${goals.length === 0 ? 'Add Goal' : 'Add New Goal'}`}
+						onPress={() => setIsAddGoal(true)}
 					/>
 				)}
-				ItemSeparatorComponent={myItemSeparator}
-				// ListEmptyComponent={myListEmpty}
-				refreshing={refreshing}
-				onRefresh={handleRefresh}
-			/>
 
-			{/* <Footer /> */}
+				<Input
+					onAddGoal={addGoalHandler}
+					modalVisible={isAddGoal}
+					setIsAddGoal={setIsAddGoal}
+				/>
+
+				<View style={styles.goalsContainer}>
+					<FlatList
+						alwaysBounceVertical={false}
+						data={goals}
+						renderItem={({ item, index, separators }) => (
+							<GoalItem
+								value={item.value}
+								timestamp={item.timestamp}
+								id={item.id}
+								onDelete={deleteGoalHandler}
+							/>
+						)}
+						keyExtractor={(item, index) => item.id}
+						ItemSeparatorComponent={myItemSeparator}
+						ListEmptyComponent={myListEmpty}
+						refreshing={refreshing}
+						onRefresh={handleRefresh}
+					/>
+				</View>
+				{/* <Footer /> */}
+			</View>
 		</SafeAreaView>
 	)
 }
 
 const styles = StyleSheet.create({
-	container: {
+	appContainer: {
 		backgroundColor: '#1e085a',
 		color: '#FFF',
 		flex: 1,
 	},
-	flatList: {
-		flex: 3,
-		marginTop: 25,
-	},
-	emptyList: {
-		shadowOffset: { width: 0, height: 3 },
-		shadowOpacity: 0.4,
-		shadowRadius: 2,
+	innerWrapper: {
+		marginTop: 15,
 		width: '100%',
 		maxWidth: '90%',
-		margin: 10,
-		fontSize: 22,
-		fontWeight: 'bold',
 		marginLeft: 'auto',
 		marginRight: 'auto',
-		textAlign: 'center',
-		cursor: 'pointer',
-		borderRadius: 6,
-		backgroundColor: '#5e0acc',
-		color: '#FFFF',
-		paddingHorizontal: 10,
-		paddingVertical: 20,
+		flex: 1,
+	},
+	goalsContainer: {
+		flex: 4,
+		marginTop: 15,
 	},
 	item: {
-		marginTop: 5,
-		fontSize: 15,
 		flex: 1,
 		color: 'white',
-	},
-	button: {
-		width: '100%',
-		maxWidth: '90%',
-		margin: 10,
-		cursor: 'pointer',
-		fontSize: 22,
-		marginTop: 50,
-		marginLeft: 'auto',
-		marginRight: 'auto',
+		textAlign: 'center',
+		fontSize: 18,
+		lineHeight: 21,
+		letterSpacing: 0.25,
 	},
 })

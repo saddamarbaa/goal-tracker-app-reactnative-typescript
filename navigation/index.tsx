@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { StatusBar } from 'expo-status-bar'
 
 import HomeScreen from '../screens/HomeScreen'
 import { GlobalScreenOption } from '../constants'
@@ -15,6 +16,7 @@ export default function Navigation() {
 				screenOptions={GlobalScreenOption}>
 				<Stack.Screen name="Home" component={HomeScreen} />
 			</Stack.Navigator>
+			<StatusBar style="light" />
 		</NavigationContainer>
 	)
 }
