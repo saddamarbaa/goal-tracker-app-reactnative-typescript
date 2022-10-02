@@ -1,7 +1,7 @@
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Pressable, StyleSheet, Text } from 'react-native'
 
 import { GoalType } from '../types'
+import { Card } from './Card'
 
 interface GoalItemsPropsType {
 	onDelete: (value: string) => void
@@ -14,38 +14,36 @@ export default function GoalItem(
 	{ onDelete, id, value, timestamp }: PropsType,
 ) {
 	return (
-		<TouchableOpacity onPress={onDelete.bind(this, id)}>
-			<View style={styles.shadowProp}>
-				<Text style={styles.text}>{value}</Text>
-			</View>
-		</TouchableOpacity>
+		<Card style={styles.shadowProp}>
+			<Pressable
+				onPress={onDelete.bind(this, id)}
+				// Ios feedback
+				style={({ pressed }) => pressed && styles.pressedItem}
+				// android feedback
+				android_ripple={{ color: 'rgb(210, 230, 255)' }}>
+				<Text style={styles.goalText}>{value}</Text>
+			</Pressable>
+		</Card>
 	)
 }
 
 const styles = StyleSheet.create({
 	shadowProp: {
-		shadowOffset: { width: 0, height: 3 },
-		shadowOpacity: 0.4,
-		shadowRadius: 2,
 		cursor: 'pointer',
-		borderRadius: 6,
 		backgroundColor: '#5e0acc',
-		color: '#FFFF',
-		paddingHorizontal: 10,
-		paddingVertical: 20,
-		width: '100%',
-		maxWidth: '90%',
-		margin: 10,
-		fontSize: 22,
-		marginLeft: 'auto',
-		marginRight: 'auto',
-		textAlign: 'center',
+		padding: 0,
 	},
-
-	text: {
-		fontSize: 22,
+	goalText: {
+		fontSize: 18,
 		lineHeight: 21,
 		letterSpacing: 0.25,
 		color: 'white',
+		paddingHorizontal: 10,
+		paddingVertical: 20,
+		textAlign: 'center',
+	},
+	pressedItem: {
+		opacity: 0.5,
+		backgroundColor: '#210644',
 	},
 })
