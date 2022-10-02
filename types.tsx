@@ -37,6 +37,6 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
 export type GoalType = {
 	value: string
 	timestamp?: unknown
-	key: string
+	key?: string
 	id: string
 }
