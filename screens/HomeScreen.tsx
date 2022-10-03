@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View, FlatList, SafeAreaView } from 'react-native'
 import React, { useLayoutEffect, useState } from 'react'
+import 'react-native-get-random-values'
+import { v4 as uuidv4 } from 'uuid'
 
 import { RootTabScreenProps, GoalType } from '../types'
 import GoalItem from '../components/GoalItem'
@@ -30,8 +32,8 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
 		setGoals((previousGoals) => [
 			{
 				timestamp: new Date(),
-				key: Math.random().toString(),
-				id: Math.random().toString(),
+				key: uuidv4(),
+				id: uuidv4(),
 				value: enteredGoal,
 			},
 			...previousGoals,
