@@ -1,4 +1,5 @@
 export * from './Card'
 export * from './FormButton'
-export * from './Input'
+export * from './CustomInput'
 export * from './GoalItem'
+export * from './CustomModal'

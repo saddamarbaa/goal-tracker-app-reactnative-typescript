@@ -16,6 +16,7 @@ const cardStyles = StyleSheet.create({
 		shadowOpacity: 0.4,
 		shadowRadius: 2,
 		borderRadius: 6,
+		cursor: 'pointer',
 		shadowColor: 'black',
 		backgroundColor: 'white',
 		width: '100%',

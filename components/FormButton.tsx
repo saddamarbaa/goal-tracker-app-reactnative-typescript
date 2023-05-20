@@ -1,5 +1,12 @@
 import React from 'react'
-import { Text, TouchableOpacity, StyleSheet, View } from 'react-native'
+import {
+	Text,
+	TouchableOpacity,
+	StyleSheet,
+	View,
+	StyleProp,
+	ViewStyle,
+} from 'react-native'
 
 import { windowHeight } from '../utils'
 
@@ -7,8 +14,8 @@ type ButtonType = {
 	buttonTitle: string
 	onPress?: () => void
 	btnType?: string
-	buttonTexStyle?: any
-	buttonContainerStyle?: any
+	buttonTexStyle?: StyleProp<ViewStyle>
+	buttonContainerStyle?: StyleProp<ViewStyle>
 }
 
 export function FormButton({

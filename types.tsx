@@ -1,42 +1,65 @@
-/**
- * Learn more about using TypeScript with React Navigation:
- * https://reactnavigation.org/docs/typescript/
- */
-
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
-import {
-	CompositeScreenProps,
-	NavigatorScreenParams,
-} from '@react-navigation/native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-
-declare global {
-	namespace ReactNavigation {
-		interface RootParamList extends RootStackParamList {}
-	}
-}
-
-export type RootStackParamList = {
-	Root: NavigatorScreenParams<RootTabParamList> | undefined
-	NotFound: undefined
-}
-
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
-	NativeStackScreenProps<RootStackParamList, Screen>
-
-export type RootTabParamList = {
-	Home: undefined
-}
-
-export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
-	CompositeScreenProps<
-		BottomTabScreenProps<RootTabParamList, Screen>,
-		NativeStackScreenProps<RootStackParamList>
-	>
+import { CompositeNavigationProp, RouteProp } from '@react-navigation/native'
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 export type GoalType = {
-	value: string
+	title: string
+	description: string
 	timestamp?: unknown
 	key?: string
 	id: string
+	isComplete?: boolean
+	inProgress?: boolean
+	startDate?: Date
+	endDate?: Date
+	category?: string
+	priority?: 'low' | 'medium' | 'high'
+}
+
+export type RootStackParamList = {
+	Home: undefined
+	Detail: { id: string }
+	New: undefined
+}
+
+export type HomeScreenNavigationProp = CompositeNavigationProp<
+	BottomTabNavigationProp<RootStackParamList>,
+	NativeStackNavigationProp<RootStackParamList, 'Home'>
+>
+
+export type HomeScreenRouteProp = RouteProp<RootStackParamList, 'Home'>
+
+export interface HomeScreenProps {
+	navigation: HomeScreenNavigationProp
+	route: HomeScreenRouteProp
+	goals: GoalType[]
+	setGoals: React.Dispatch<React.SetStateAction<GoalType[]>>
+}
+
+export type AddNewGoalScreenNavigationProp = CompositeNavigationProp<
+	BottomTabNavigationProp<RootStackParamList>,
+	NativeStackNavigationProp<RootStackParamList, 'New'>
+>
+
+export type AddNewGoalScreenRouteProp = RouteProp<RootStackParamList, 'New'>
+
+export type AddNewGoalScreenProps = {
+	navigation: AddNewGoalScreenNavigationProp
+	route: AddNewGoalScreenRouteProp
+	goals: GoalType[]
+	setGoals: React.Dispatch<React.SetStateAction<GoalType[]>>
+}
+
+export type DetailScreenNavigationProp = CompositeNavigationProp<
+	BottomTabNavigationProp<RootStackParamList>,
+	NativeStackNavigationProp<RootStackParamList, 'Detail'>
+>
+
+export type DetailScreenRouteProp = RouteProp<RootStackParamList, 'Detail'>
+
+export interface DetailScreenProps {
+	navigation: DetailScreenNavigationProp
+	route: DetailScreenRouteProp
+	goals: GoalType[]
+	setGoals: React.Dispatch<React.SetStateAction<GoalType[]>>
 }
