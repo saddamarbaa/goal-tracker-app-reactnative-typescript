@@ -210,52 +210,51 @@ Contributions are always welcome!
 # Screenshots
 
 
-## Add New Goal Screen
 
+
+## Add New Goal Screen
 <p>
-<img width="417" alt="Screenshot 2023-05-20 at 17 04 22" src="https://github.com/saddamarbaa/tes/assets/51326421/74256607-ba48-4b58-8eee-266451c09e5d">
+<img width="410" alt="Screenshot 2023-05-20 at 17 03 53" src="https://github.com/saddamarbaa/goal-tracker-app-react-native-typescript/assets/51326421/2c63a691-c72b-4953-8e21-73e4882be1c4">
 </P>
 
 <br>
 
 <p>
-<img width="410" alt="Screenshot 2023-05-20 at 17 03 53" src="https://github.com/saddamarbaa/tes/assets/51326421/fa5584ab-82ba-4237-9fc6-503fdb288600">
+<img width="417" alt="Screenshot 2023-05-20 at 17 04 22" src="https://github.com/saddamarbaa/goal-tracker-app-react-native-typescript/assets/51326421/9752c15a-657b-4017-be39-7458b7c1fcb6">
 </P>
+
 
 ## Home Screen
-
 <p>
-<img width="427" alt="Screenshot 2023-05-20 at 16 33 56" src="https://github.com/saddamarbaa/tes/assets/51326421/d07995dd-24ed-4a23-92bc-0466bbb20cb9">
+<img width="422" alt="Screenshot 2023-05-20 at 22 12 35" src="https://github.com/saddamarbaa/goal-tracker-app-react-native-typescript/assets/51326421/ea9c6075-0f2b-4dcb-9801-320a1e4312fa">
 </P>
-
 <br>
 
 <p>
-<img width="430" alt="Screenshot 2023-05-20 at 16 34 25" src="https://github.com/saddamarbaa/tes/assets/51326421/552aca22-1272-405c-ba21-1710ec027d50">
+<img width="422" alt="Screenshot 2023-05-20 at 22 12 10" src="https://github.com/saddamarbaa/goal-tracker-app-react-native-typescript/assets/51326421/f4ae381f-4223-43e2-a31a-e873961badf2">
 </P>
 
+<br>
+<p>
+<img width="421" alt="Screenshot 2023-05-20 at 16 50 01" src="https://github.com/saddamarbaa/goal-tracker-app-react-native-typescript/assets/51326421/01cdd842-2421-419c-847d-2633f52f5194">
+</P>
 <br>
 
 <p>
-<img width="421" alt="Screenshot 2023-05-20 at 16 50 01" src="https://github.com/saddamarbaa/tes/assets/51326421/41fad001-94af-4330-bd11-de409a277874">
-</P>
-
-<br>
-
-<p>
-<img width="420" alt="Screenshot 2023-05-20 at 16 48 42" src="https://github.com/saddamarbaa/tes/assets/51326421/dde87e49-f71d-4ae1-acb1-209f80019b3d">
+<img width="420" alt="Screenshot 2023-05-20 at 16 48 42" src="https://github.com/saddamarbaa/goal-tracker-app-react-native-typescript/assets/51326421/a13c9566-bf14-4ae0-ab6a-6686bf269243">
 </P>
 <br>
+
 
 
 ## Detail Screen
 <div>
-<img width="423" alt="Screenshot 2023-05-20 at 16 58 12" src="https://github.com/saddamarbaa/tes/assets/51326421/104199a9-b96f-4895-8519-0bd276739138">
+<img width="422" alt="Screenshot 2023-05-20 at 22 27 05" src="https://github.com/saddamarbaa/goal-tracker-app-react-native-typescript/assets/51326421/cba68ef9-2ab4-4c7d-b6cc-862c79524b2b">
 </div>
 
 <br>
 <div>
-<img width="415" alt="Screenshot 2023-05-20 at 16 58 36" src="https://github.com/saddamarbaa/tes/assets/51326421/ea0de1d1-b976-4bda-9880-22745c339c84">
+<img width="422" alt="Screenshot 2023-05-20 at 22 25 06" src="https://github.com/saddamarbaa/goal-tracker-app-react-native-typescript/assets/51326421/1c4ef127-f569-475a-96c2-c1759c0f99a0">
 </div>
 
 
